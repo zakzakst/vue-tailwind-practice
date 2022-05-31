@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   "stories": [
     "../src/**/*.stories.mdx",
@@ -11,5 +13,15 @@ module.exports = {
   "framework": "@storybook/vue3",
   "core": {
     "builder": "@storybook/builder-webpack5"
-  }
+  },
+  webpackFinal: async (config) => {
+    config.module.rules.push({
+      test: /\.css$/,
+      use: [{
+        loader: 'postcss-loader',
+      }, ],
+      include: path.resolve(__dirname, '../src'),
+    });
+    return config;
+  },
 }
