@@ -1,6 +1,6 @@
 <template>
   <!-- <button type="button" class="text-3xl font-bold underline bg-primary" :class="classes" @click="onClick" :style="style">{{ label }}</button> -->
-  <button type="button" class="text-white bg-primary hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm focus:outline-none dark:focus:ring-blue-800" :class="classes">{{ label }}</button>
+  <button type="button" class="text-white bg-primary focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm focus:outline-none dark:focus:ring-blue-800" :class="classes">{{ label }}</button>
 </template>
 
 <script>
@@ -37,6 +37,13 @@ export default {
 
   setup(props, { emit }) {
     props = reactive(props);
+    
+    const classList = {
+      blue: 'bg-blue-700 hover:bg-blue-800',
+      green: 'bg-green-700 hover:bg-green-800',
+      red: 'bg-red-700 hover:bg-red-800',
+    };
+
     return {
       // classes: computed(() => ({
       //   // 'storybook-button': true,
@@ -50,7 +57,8 @@ export default {
         };
         if (props.backgroundColor) {
           // result[`bg-${props.backgroundColor}-700`] = true;
-          result[`bg-green-700`] = true;
+          // result[`bg-green-700 hover:bg-blue-800`] = true;
+          result[classList[props.backgroundColor]] = true;
         } else {
           result['bg-primary'] = true;
         }
