@@ -1,6 +1,10 @@
 <template>
-  <!-- <button type="button" class="text-3xl font-bold underline bg-primary" :class="classes" @click="onClick" :style="style">{{ label }}</button> -->
-  <button type="button" class="text-white bg-primary focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm focus:outline-none dark:focus:ring-blue-800" :class="classes">{{ label }}</button>
+  <button
+    type="button"
+    class="text-white px-5 py-3 focus:ring-4 font-medium rounded-lg text-sm focus:outline-none dark:focus:ring-blue-800"
+    :class="classes"
+    @click="onClick"
+  >{{ label }}</button>
 </template>
 
 <script>
@@ -14,22 +18,32 @@ export default {
       type: String,
       required: true,
     },
-    primary: {
-      type: Boolean,
-      default: false,
+    color: {
+      type: String,
+      validator: function (value) {
+        const colors = [
+          'primary',
+          'secondary',
+          'success',
+          'danger',
+          'warning',
+        ];
+        return colors.indexOf(value) !== -1;
+      },
     },
     size: {
       type: String,
       validator: function (value) {
-        return ['small', 'medium', 'large'].indexOf(value) !== -1;
+        const sizes = [
+          'small',
+          'large',
+        ];
+        return sizes.indexOf(value) !== -1;
       },
     },
-    backgroundColor: {
-      type: String,
-      default: null,
-      validator: function (value) {
-        return ['blue', 'green', 'red'].indexOf(value) !== -1;
-      },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
 
@@ -37,46 +51,34 @@ export default {
 
   setup(props, { emit }) {
     props = reactive(props);
-    
-    const classList = {
-      blue: 'bg-blue-700 hover:bg-blue-800',
-      green: 'bg-green-700 hover:bg-green-800',
-      red: 'bg-red-700 hover:bg-red-800',
-    };
 
     return {
-      // classes: computed(() => ({
-      //   // 'storybook-button': true,
-      //   // 'storybook-button--primary': props.primary,
-      //   // 'storybook-button--secondary': !props.primary,
-      //   // [`storybook-button--${props.size || 'medium'}`]: true,
-      // })),
       classes: computed(() => {
         const result = {
-          'storybook-button': true,
+          '--disabled': props.disabled,
         };
-        if (props.backgroundColor) {
-          // result[`bg-${props.backgroundColor}-700`] = true;
-          // result[`bg-green-700 hover:bg-blue-800`] = true;
-          result[classList[props.backgroundColor]] = true;
-        } else {
-          result['bg-primary'] = true;
+        if (props.color) {
+          result[`--color-${props.color}`] = true;
+        }
+        if (props.size) {
+          result[`--size-${props.size}`] = true;
         }
         return result;
       }),
-      style: computed(() => ({
-        backgroundColor: props.backgroundColor,
-      })),
       onClick() {
         emit('click');
-      }
-    }
+      },
+    };
   },
 };
 </script>
 
 <style scoped>
-button {
-  @apply px-5 py-3;
+button.--color-primary {
+  @apply 
+    bg-primary
+    hover:bg-primary-hover
+    focus:bg-primary-focus
+    focus:ring-primary-ring;
 }
 </style>
