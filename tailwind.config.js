@@ -1,3 +1,5 @@
+const { colorList } = require('./colorList');
+
 module.exports = {
   content: [
     './index.html',
@@ -7,30 +9,52 @@ module.exports = {
     extend: {
       colors: {
         // primary
-        'primary': '#f00',
-        'primary-hover': '#df0000',
-        'primary-focus': '#df0000',
-        'primary-ring': '#8f0000',
+        'primary': colorList.red['50'],
+        'primary-hover': '#1976D2',
+        'primary-focus': '#1976D2',
+        'primary-ring': '#0D47A1',
+        'primary-light': '#E3F2FD',
+        'primary-light-hover': '#BBDEFB',
+        'primary-light-focus': '#BBDEFB',
+        'primary-border': '#0D47A1',
         // secondary
-        'secondary': '#f00',
-        'secondary-hover': '#df0000',
-        'secondary-focus': '#df0000',
-        'secondary-ring': '#8f0000',
+        'secondary': '',
+        'secondary-hover': '',
+        'secondary-focus': '',
+        'secondary-ring': '',
+        'secondary-light': '',
+        'secondary-light-hover': '',
         // success
-        'success': '#f00',
-        'success-hover': '#df0000',
-        'success-focus': '#df0000',
-        'success-ring': '#8f0000',
+        'success': '',
+        'success-hover': '',
+        'success-focus': '',
+        'success-ring': '',
+        'success-light': '',
+        'success-light-hover': '',
         // danger
-        'danger': '#f00',
-        'danger-hover': '#df0000',
-        'danger-focus': '#df0000',
-        'danger-ring': '#8f0000',
+        'danger': '',
+        'danger-hover': '',
+        'danger-focus': '',
+        'danger-ring': '',
+        'danger-light': '',
+        'danger-light-hover': '',
         // warning
-        'warning': '#f00',
-        'warning-hover': '#df0000',
-        'warning-focus': '#df0000',
-        'warning-ring': '#8f0000',
+        'warning': '',
+        'warning-hover': '',
+        'warning-focus': '',
+        'warning-ring': '',
+        'warning-light': '',
+        'warning-light-hover': '',
+        // info
+        'info': '',
+        'info-hover': '',
+        'info-focus': '',
+        'info-ring': '',
+        'info-light': '',
+        'info-light-hover': '',
+      },
+      transitionDuration: {
+        DEFAULT: '300ms',
       },
     },
   },
