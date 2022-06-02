@@ -4,25 +4,29 @@ export default {
   title: 'Atoms/Button',
   component: MyButton,
   argTypes: {
-    // backgroundColor: { control: 'color' },
     color: {
       control: { type: 'select' },
       options: [
+        '',
         'primary',
         'secondary',
         'success',
         'danger',
         'warning',
+        'info',
       ],
     },
-    // onClick: {},
     size: {
       control: { type: 'select' },
       options: [
+        '',
         'small',
         'large',
       ],
     },
+    // onClick: {
+    //   action: 'emit("click")',
+    // },
   },
 };
 
@@ -34,9 +38,10 @@ const Template = (args) => ({
   template: '<my-button v-bind="args" />',
 });
 
-export const Primary = Template.bind({});
-Primary.args = {
-  label: 'Primary',
+export const Default = Template.bind({});
+Default.storyName = '通常';
+Default.args = {
+  label: 'ボタン',
 };
 
 export const Small = Template.bind({});
