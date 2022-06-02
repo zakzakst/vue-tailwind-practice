@@ -5,14 +5,23 @@ export default {
   component: MyButton,
   argTypes: {
     // backgroundColor: { control: 'color' },
-    backgroundColor: {
+    color: {
       control: { type: 'select' },
-      options: ['blue', 'green', 'red'],
+      options: [
+        'primary',
+        'secondary',
+        'success',
+        'danger',
+        'warning',
+      ],
     },
     // onClick: {},
     size: {
       control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
+      options: [
+        'small',
+        'large',
+      ],
     },
   },
 };
@@ -27,12 +36,12 @@ const Template = (args) => ({
 
 export const Primary = Template.bind({});
 Primary.args = {
-  primary: true,
   label: 'Primary',
 };
 
 export const Small = Template.bind({});
 Small.args = {
+  disabled: true,
   size: 'small',
   label: 'Small',
 };
