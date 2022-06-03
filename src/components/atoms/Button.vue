@@ -148,6 +148,51 @@ button.--outlined.--color-primary {
     focus:bg-primary-light-focus
     border-primary-border;
 }
+button.--outlined.--color-secondary {
+  @apply
+    bg-secondary-light
+    hover:bg-secondary-light-hover
+    focus:bg-secondary-light-focus
+    border-secondary-border;
+}
+button.--outlined.--color-success {
+  @apply
+    bg-success-light
+    hover:bg-success-light-hover
+    focus:bg-success-light-focus
+    border-success-border;
+}
+button.--outlined.--color-danger {
+  @apply
+    bg-danger-light
+    hover:bg-danger-light-hover
+    focus:bg-danger-light-focus
+    border-danger-border;
+}
+button.--outlined.--color-warning {
+  @apply
+    bg-warning-light
+    hover:bg-warning-light-hover
+    focus:bg-warning-light-focus
+    border-warning-border;
+}
+button.--outlined.--color-info {
+  @apply
+    bg-info-light
+    hover:bg-info-light-hover
+    focus:bg-info-light-focus
+    border-info-border;
+}
+
+/* 無効 */
+button.--disabled {
+  pointer-events: none;
+  user-select: none;
+  color: rgba(255, 255, 255, 0.5);
+}
+button.--disabled.--outlined {
+  color: rgba(0, 0, 0, 0.2);
+}
 
 /* サイズ */
 button.--size-small {
