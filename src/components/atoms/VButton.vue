@@ -3,6 +3,7 @@
     type="button"
     class="bg-gray-100 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-700 px-6 py-2 rounded border border-transparent transition"
     :class="classes"
+    :disabled="disabled"
     @click="onClick"
   >{{ label }}</button>
 </template>
@@ -11,7 +12,7 @@
 import { reactive, computed } from 'vue';
 
 export default {
-  name: 'my-button',
+  name: 'VButton',
 
   props: {
     label: {
@@ -64,7 +65,6 @@ export default {
     return {
       classes: computed(() => {
         const result = {
-          '--disabled': props.disabled,
           '--outlined': props.outlined,
           'rounded-full': props.rounded,
         };
@@ -185,13 +185,14 @@ button.--outlined.--color-info {
 }
 
 /* 無効 */
-button.--disabled {
+button:disabled {
   pointer-events: none;
   user-select: none;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.3);
+  opacity: 0.7;
 }
-button.--disabled.--outlined {
-  color: rgba(0, 0, 0, 0.2);
+button:disabled[class*="--color-"]:not(.--outlined) {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* サイズ */
