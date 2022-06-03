@@ -4,10 +4,19 @@ export default {
   title: 'Atoms/Alert',
   component: VAlert,
   argTypes: {
+    // 表示フィールド
+    show: {
+      name: '表示',
+      description: '表示状態',
+      defaultValue: true,
+      control: {
+        type: 'boolean',
+      },
+    },
     // 色フィールド
     color: {
       name: '色',
-      description: 'ボタンの色',
+      description: 'アラートの色',
       options: [
         'primary',
         'secondary',
@@ -37,6 +46,9 @@ export default {
         type: 'boolean',
       },
     },
+    clickClose() {
+      console.log(this);
+    },
   },
 };
 
@@ -45,7 +57,7 @@ const Template = (args) => ({
   setup() {
     return { args };
   },
-  template: '<v-alert v-bind="args"><a href="#">link</a>文言が入ります。文言が入ります。文言が入ります。文言が入ります。文言が入ります。文言が入ります。文言が入ります。文言が入ります。文言が入ります。</v-alert>',
+  template: '<v-alert v-bind="args"><template v-slot:icon><b>link<br>aa<br>aa</b></template>文言が入ります。文言が入ります。文言が入ります。文言が入ります。文言が入ります。文言が入ります。文言が入ります。文言が入ります。文言が入ります。<div>test</div></v-alert>',
 });
 
 export const Default = Template.bind({});

@@ -37,7 +37,7 @@ import './header.css';
 export default {
   name: 'my-header',
 
-  components: { MyButton },
+  // components: { MyButton },
 
   props: {
     user: {
