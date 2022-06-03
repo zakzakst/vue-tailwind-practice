@@ -10,6 +10,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "bootstrap-icons": "^1.8.3",
     "core-js": "^3.8.3",
     "vue": "^3.2.17"
   },

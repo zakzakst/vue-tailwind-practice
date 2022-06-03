@@ -1,13 +1,34 @@
 <template>
-  <div class="bg-gray-100 px-6 py-4 rounded border border-gray-700" :class="classes">
-    <slot />
-    <button
-      v-if="dismissible"
-      type="button"
-      class="absolute top-4 right-4 w-6 h-6 bg-black"
-      aria-label="Close"
-    />
-  </div>
+  <transition name="v-fade">
+    <!-- <div v-if="state.isShow" class="flex bg-gray-100 px-6 py-4 rounded border border-gray-700" :class="classes"> -->
+    <div v-if="show" class="flex bg-gray-100 px-6 py-4 rounded border border-gray-700" :class="classes">
+      <div v-if="$slots.icon" class="flex-shrink-0 mr-4">
+        <slot name="icon" />
+      </div>
+      <div class="self-center">
+        <slot />
+      </div>
+      <button
+        v-if="dismissible"
+        type="button"
+        class="absolute top-4 right-4 w-4 h-4 flex justify-center items-center fill-gray-700 hover:fill-gray-400 transition"
+        aria-label="閉じる"
+        @click="onClickClose"
+      >
+        <!-- <svg class="w-full h-full">
+          <use xlink:href="~/bootstrap-icons/bootstrap-icons.svg#x-lg"/>
+        </svg> -->
+        <svg
+          width="16"
+          height="16"
+          class="w-full h-full"
+          viewBox="0 0 16 16"
+        >
+          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+        </svg>
+      </button>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -17,6 +38,10 @@ export default {
   name: 'VAlert',
 
   props: {
+    show: {
+      type: Boolean,
+      default: false,
+    },
     color: {
       type: String,
       validator: function (value) {
@@ -37,10 +62,16 @@ export default {
     },
   },
 
-  setup(props) {
+  emits: ['clickClose'],
+
+  setup(props, { emit }) {
     props = reactive(props);
+    const state = reactive({
+      isShow: true,
+    });
 
     return {
+      state,
       classes: computed(() => {
         const result = {
           'relative pr-12': props.dismissible,
@@ -50,6 +81,10 @@ export default {
         }
         return result;
       }),
+      onClickClose() {
+        // state.isShow = false;
+        emit('clickClose');
+      },
     };
   },
 };
