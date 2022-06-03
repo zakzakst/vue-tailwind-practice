@@ -3,6 +3,7 @@
     type="button"
     class="bg-gray-100 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-700 px-6 py-2 rounded border border-transparent transition"
     :class="classes"
+    :disabled="disabled"
     @click="onClick"
   >{{ label }}</button>
 </template>
@@ -11,7 +12,7 @@
 import { reactive, computed } from 'vue';
 
 export default {
-  name: 'my-button',
+  name: 'VButton',
 
   props: {
     label: {
@@ -64,7 +65,6 @@ export default {
     return {
       classes: computed(() => {
         const result = {
-          '--disabled': props.disabled,
           '--outlined': props.outlined,
           'rounded-full': props.rounded,
         };
@@ -147,6 +147,52 @@ button.--outlined.--color-primary {
     hover:bg-primary-light-hover
     focus:bg-primary-light-focus
     border-primary-border;
+}
+button.--outlined.--color-secondary {
+  @apply
+    bg-secondary-light
+    hover:bg-secondary-light-hover
+    focus:bg-secondary-light-focus
+    border-secondary-border;
+}
+button.--outlined.--color-success {
+  @apply
+    bg-success-light
+    hover:bg-success-light-hover
+    focus:bg-success-light-focus
+    border-success-border;
+}
+button.--outlined.--color-danger {
+  @apply
+    bg-danger-light
+    hover:bg-danger-light-hover
+    focus:bg-danger-light-focus
+    border-danger-border;
+}
+button.--outlined.--color-warning {
+  @apply
+    bg-warning-light
+    hover:bg-warning-light-hover
+    focus:bg-warning-light-focus
+    border-warning-border;
+}
+button.--outlined.--color-info {
+  @apply
+    bg-info-light
+    hover:bg-info-light-hover
+    focus:bg-info-light-focus
+    border-info-border;
+}
+
+/* 無効 */
+button:disabled {
+  pointer-events: none;
+  user-select: none;
+  color: rgba(0, 0, 0, 0.3);
+  opacity: 0.7;
+}
+button:disabled[class*="--color-"]:not(.--outlined) {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* サイズ */
