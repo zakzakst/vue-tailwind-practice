@@ -1,6 +1,5 @@
 <template>
   <transition name="v-fade">
-    <!-- <div v-if="state.isShow" class="flex bg-gray-100 px-6 py-4 rounded border border-gray-700" :class="classes"> -->
     <div v-if="show" class="flex bg-gray-100 px-6 py-4 rounded border border-gray-700" :class="classes">
       <div v-if="$slots.icon" class="flex-shrink-0 mr-4">
         <slot name="icon" />
@@ -13,7 +12,7 @@
         type="button"
         class="absolute top-4 right-4 w-4 h-4 flex justify-center items-center fill-gray-700 hover:fill-gray-400 transition"
         aria-label="閉じる"
-        @click="onClickClose"
+        @click="onClickDismiss"
       >
         <!-- <svg class="w-full h-full">
           <use xlink:href="~/bootstrap-icons/bootstrap-icons.svg#x-lg"/>
@@ -62,7 +61,7 @@ export default {
     },
   },
 
-  emits: ['clickClose'],
+  emits: ['clickDismiss'],
 
   setup(props, { emit }) {
     props = reactive(props);
@@ -81,9 +80,8 @@ export default {
         }
         return result;
       }),
-      onClickClose() {
-        // state.isShow = false;
-        emit('clickClose');
+      onClickDismiss() {
+        emit('clickDismiss');
       },
     };
   },
