@@ -1,12 +1,12 @@
 ☐ ボタンのaタグ対応
 ☐ ボタンのローディング対応
 ☐ SVGアイコンの読み込み「vue-svg-loader」
+☐ slotもうちょっと上手くstoryにできないか調査
+☐ アラートの時限設定（https://bootstrap-vue.org/docs/components/alert (dismiss-count-down)）
 
 https://bootstrap-vue.org/docs/components/breadcrumb
-https://bootstrap-vue.org/docs/components/alert (dismiss-count-down)
 https://bootstrap-vue.org/docs/components/dropdown
 https://bootstrap-vue.org/docs/components/list-group
-https://bootstrap-vue.org/docs/components/modal
 https://bootstrap-vue.org/docs/components/nav
 https://bootstrap-vue.org/docs/components/pagination
 https://bootstrap-vue.org/docs/components/toast
