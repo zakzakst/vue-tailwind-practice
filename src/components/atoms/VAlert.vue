@@ -65,12 +65,8 @@ export default {
 
   setup(props, { emit }) {
     props = reactive(props);
-    const state = reactive({
-      isShow: true,
-    });
 
     return {
-      state,
       classes: computed(() => {
         const result = {
           'relative pr-12': props.dismissible,
