@@ -3,6 +3,7 @@
 ☐ SVGアイコンの読み込み「vue-svg-loader」
 ☐ slotもうちょっと上手くstoryにできないか調査
 ☐ アラートの時限設定（https://bootstrap-vue.org/docs/components/alert (dismiss-count-down)）
+☐ パンくず「router-link」の対応
 
 https://bootstrap-vue.org/docs/components/dropdown
 https://bootstrap-vue.org/docs/components/list-group
