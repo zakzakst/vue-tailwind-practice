@@ -8,6 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // normal
+        'normal': colorList.gray['700'],
+        'normal-hover': colorList.gray['800'],
+        'normal-focus': colorList.gray['800'],
+        'normal-ring': colorList.gray['900'],
+        'normal-light': colorList.gray['50'],
+        'normal-light-hover': colorList.gray['100'],
+        'normal-light-focus': colorList.gray['100'],
+        'normal-border': colorList.gray['900'],
         // primary
         'primary': colorList.blue['700'],
         'primary-hover': colorList.blue['800'],
