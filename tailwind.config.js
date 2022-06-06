@@ -72,6 +72,9 @@ module.exports = {
         'info-light-focus': colorList.cyan['100'],
         'info-border': colorList.cyan['900'],
       },
+      borderColor: {
+        DEFAULT: colorList.gray['400'],
+      },
       transitionDuration: {
         DEFAULT: '300ms',
       },
