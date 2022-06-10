@@ -10,14 +10,13 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
       </svg>
     </button>
-    <!-- Dropdown menu -->
     <div
       v-if="state.isShowItems && items.length"
       class="z-10 absolute bg-white divide-y divide-gray-100 rounded shadow w-44"
     >
       <ul class="py-1 text-sm text-gray-700">
         <li v-for="(item, index) in items" :key="index">
-          <button class="block w-full px-4 py-2 hover:bg-gray-100">{{ item.label }}</button>
+          <button class="block w-full px-4 py-2 hover:bg-gray-100" @click="onClickItem(item)">{{ item.label }}</button>
         </li>
       </ul>
     </div>
@@ -54,8 +53,8 @@ export default {
       onClickButton() {
         state.isShowItems = !state.isShowItems;
       },
-      onClickItem() {
-        emit('clickItem');
+      onClickItem(item) {
+        emit('clickItem', item);
       },
     };
   },
