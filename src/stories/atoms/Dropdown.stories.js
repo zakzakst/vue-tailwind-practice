@@ -20,6 +20,10 @@ export default {
         type: 'object',
       },
     },
+    // 項目クリック時の処理
+    onClickItem: {
+      action: '項目クリック',
+    },
   },
 };
 
