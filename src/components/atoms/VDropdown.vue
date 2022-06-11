@@ -1,7 +1,7 @@
 <template>
   <div>
     <button
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
+      class="bg-gray-100 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-700 px-6 py-2 rounded border border-transparent transition inline-flex items-center"
       type="button"
       @click="onClickButton"
     >
@@ -12,10 +12,10 @@
     </button>
     <div
       v-if="state.isShowItems && items.length"
-      class="z-10 absolute bg-white divide-y divide-gray-100 rounded shadow w-44"
+      class="z-10 absolute bg-white rounded shadow w-44"
     >
-      <ul class="py-1 text-sm text-gray-700">
-        <li v-for="(item, index) in items" :key="index">
+      <ul class="py-1 text-sm divide-y divide-normal-border">
+        <li v-for="(item, index) in items" :key="index" class="">
           <button class="block w-full px-4 py-2 hover:bg-gray-100" @click="onClickItem(item)">{{ item.label }}</button>
         </li>
       </ul>
@@ -37,6 +37,18 @@ export default {
     items: {
       type: Array,
       required: true,
+    },
+    position: {
+      type: String,
+      validator: function (value) {
+        const sizes = [
+          'top',
+          'right',
+          'bottom',
+          'left',
+        ];
+        return sizes.indexOf(value) !== -1;
+      },
     },
   },
 
