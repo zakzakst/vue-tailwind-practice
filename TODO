@@ -5,6 +5,8 @@
 ☐ アラートの時限設定（https://bootstrap-vue.org/docs/components/alert (dismiss-count-down)）
 ☐ パンくず、リスト「router-link」の対応
 ☐ ドロップダウンの要素をボタンとリストグループのMoleculesにする
+☐ ドロップダウンのアイコンの方向をメニュー表示の位置によって変更する
 
 https://bootstrap-vue.org/docs/components/pagination
+https://github.com/zakzakst/nuxt-01/blob/main/components/Pagination.vue
 https://bootstrap-vue.org/docs/components/toast
