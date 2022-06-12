@@ -12,26 +12,46 @@ export default {
         type: 'object',
       },
     },
-    // // 位置フィールド
-    // position: {
-    //   name: '位置',
-    //   description: '項目の位置',
-    //   options: [
-    //     'center',
-    //     'right',
-    //   ],
-    //   control: {
-    //     type: 'select',
-    //     labels: {
-    //       center: '中央',
-    //       right: '右',
-    //     },
-    //   },
-    // },
-    // // タブクリック時の処理
-    // onClick: {
-    //   action: 'タブクリック',
-    // },
+    // X位置フィールド
+    positionX: {
+      name: 'X位置',
+      description: 'X位置の設定',
+      options: [
+        'left',
+        'center',
+        'right',
+      ],
+      control: {
+        type: 'select',
+        labels: {
+          left: '左',
+          center: '中央',
+          right: '右',
+        },
+      },
+    },
+    // Y位置フィールド
+    positionY: {
+      name: 'Y位置',
+      description: 'Y位置の設定',
+      options: [
+        'top',
+        'center',
+        'bottom',
+      ],
+      control: {
+        type: 'select',
+        labels: {
+          top: '上',
+          center: '中央',
+          bottom: '下',
+        },
+      },
+    },
+    // 閉じるクリック時の処理
+    onClose: {
+      action: '閉じるクリック',
+    },
   },
 };
 
@@ -48,21 +68,19 @@ Default.storyName = '通常';
 Default.args = {
   items: [
     {
-      message: 'item1',
+      message: 'message1',
     },
     {
-      message: 'item2',
+      message: 'message2',
     },
     {
-      message: 'item3',
+      message: 'message3',
     },
     {
-      message: 'active',
-      active: true,
+      message: 'message4',
     },
     {
-      message: 'disabled',
-      disabled: true,
+      message: 'message5',
     },
   ],
 };

@@ -6,6 +6,8 @@
 ☐ パンくず、リスト「router-link」の対応
 ☐ ドロップダウンの要素をボタンとリストグループのMoleculesにする
 ☐ ドロップダウンのアイコンの方向をメニュー表示の位置によって変更する
+☐ トーストのY位置centerがstorybookで上手く表示されない原因確認
+☐ トースト閉じるボタンクリック時のtransition-group挙動確認
 
 https://bootstrap-vue.org/docs/components/pagination
 https://github.com/zakzakst/nuxt-01/blob/main/components/Pagination.vue
