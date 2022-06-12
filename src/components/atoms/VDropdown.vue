@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div class="relative inline-block">
     <button
-      class="bg-gray-100 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-700 px-6 py-2 rounded border border-transparent transition inline-flex items-center"
       type="button"
+      class="bg-gray-100 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none px-6 py-2 rounded border border-transparent transition inline-flex items-center"
+      :class="{ 'ring-2 ring-gray-700': state.isShowItems }"
       @click="onClickButton"
     >
       {{ label }}
@@ -13,6 +14,12 @@
     <div
       v-if="state.isShowItems && items.length"
       class="z-10 absolute bg-white rounded shadow w-44"
+      :class="{
+        'bottom-full left-0': position === 'top',
+        'top-0 left-full': position === 'right',
+        'top-full left-0': position === 'bottom',
+        'top-0 right-full': position === 'left',
+      }"
     >
       <ul class="py-1 text-sm divide-y divide-normal-border">
         <li v-for="(item, index) in items" :key="index" class="">

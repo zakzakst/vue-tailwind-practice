@@ -4,7 +4,7 @@
 ☐ slotもうちょっと上手くstoryにできないか調査
 ☐ アラートの時限設定（https://bootstrap-vue.org/docs/components/alert (dismiss-count-down)）
 ☐ パンくず、リスト「router-link」の対応
+☐ ドロップダウンの要素をボタンとリストグループのMoleculesにする
 
-https://bootstrap-vue.org/docs/components/dropdown
 https://bootstrap-vue.org/docs/components/pagination
 https://bootstrap-vue.org/docs/components/toast
