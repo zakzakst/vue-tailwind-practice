@@ -20,6 +20,34 @@ export default {
         type: 'object',
       },
     },
+    // 項目フィールド
+    items: {
+      name: '項目',
+      description: '項目のデータ',
+      control: {
+        type: 'object',
+      },
+    },
+    // 位置フィールド
+    position: {
+      name: '位置',
+      description: '位置のデータ',
+      options: [
+        'top',
+        'right',
+        'bottom',
+        'left',
+      ],
+      control: {
+        type: 'select',
+        labels: {
+          top: '上',
+          right: '右',
+          bottom: '下',
+          left: '左',
+        },
+      },
+    },
     // 項目クリック時の処理
     onClickItem: {
       action: '項目クリック',
