@@ -1,44 +1,65 @@
 <template>
-  <div v-if="items.length">
-    <div
-      v-for="(item, index) in items"
-      :key="index"
-      class="flex items-center w-full max-w-xs p-2 bg-white rounded-lg shadow"
-    >
-      <div class="ml-3 text-sm font-normal">{{ item.message }}</div>
-      <button
-        type="button"
-        class="ml-auto bg-white rounded-lg p-1.5 hover:bg-gray-100 inline-flex h-8 w-8"
-        @click="onClickClose(index)"
+  <div
+    v-if="items.length"
+    class="fixed w-80"
+    :class="{
+      'right-4': positionX === 'right',
+      'left-4': positionX === 'left',
+      'inset-x-0 mx-auto': positionX === 'center',
+      'top-4': positionY === 'top',
+      'bottom-4': positionY === 'bottom',
+      'inset-y-0 my-auto': positionY === 'center',
+    }"
+  >
+    <transition-group name="v-fade">
+      <div
+        v-for="(item, index) in items"
+        :key="index"
+        class="toast flex items-center w-full p-2 bg-white rounded-lg shadow"
       >
-        <span class="sr-only">Close</span>
-        <svg class="w-5 h-5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd"
-            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-            clip-rule="evenodd"></path>
-        </svg>
-      </button>
-    </div>
+        <div class="ml-3 text-sm font-normal">{{ item.message }}</div>
+        <v-close class="ml-auto" @click="onClickClose(index)" />
+      </div>
+    </transition-group>
   </div>
 </template>
 
 <script>
 import { reactive } from 'vue';
+import VClose from './VClose';
 
 export default {
   name: 'VToast',
+
+  components: {
+    VClose,
+  },
 
   props: {
     items: {
       type: Array,
       default: [],
     },
-    position: {
+    positionX: {
       type: String,
+      default: 'right',
       validator: function (value) {
         const sizes = [
+          'left',
           'center',
           'right',
+        ];
+        return sizes.indexOf(value) !== -1;
+      },
+    },
+    positionY: {
+      type: String,
+      default: 'top',
+      validator: function (value) {
+        const sizes = [
+          'top',
+          'center',
+          'bottom',
         ];
         return sizes.indexOf(value) !== -1;
       },
@@ -58,3 +79,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.toast + .toast {
+  @apply mt-2;
+}
+</style>
