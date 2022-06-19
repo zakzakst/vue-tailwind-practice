@@ -1,5 +1,6 @@
 <template>
   <nav class="pagination" :class="navClass">
+    <v-pagination-button />
     <!-- 前に戻るボタン -->
     <a
       v-if="currentNum > 1"
@@ -55,9 +56,14 @@
 
 <script>
 import { reactive, computed } from 'vue';
+import VPaginationButton from './VPaginationButton';
 
 export default {
   name: 'VPagination',
+
+  components: {
+    VPaginationButton,
+  },
 
   props: {
     total: {
