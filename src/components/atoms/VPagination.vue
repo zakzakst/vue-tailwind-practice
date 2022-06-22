@@ -1,6 +1,8 @@
 <template>
   <nav class="pagination" :class="navClass">
-    <v-pagination-button />
+    <v-pagination-button link="test" label="test1" />
+    <v-pagination-button link="" label="test2" />
+    <v-pagination-button label="test3" />
     <!-- 前に戻るボタン -->
     <a
       v-if="currentNum > 1"
