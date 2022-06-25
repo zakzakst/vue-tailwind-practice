@@ -63,6 +63,18 @@ export default {
         type: 'boolean',
       },
     },
+    // ナビゲーションクリック時の処理
+    onClickNav: {
+      action: 'ナビゲーションクリック',
+    },
+    // 前に戻るクリック時の処理
+    onClickNavPrev: {
+      action: '前に戻るクリック',
+    },
+    // 次に進むクリック時の処理
+    onClickNavNext: {
+      action: '次に進むクリック',
+    },
   },
 };
 

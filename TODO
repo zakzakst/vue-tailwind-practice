@@ -9,6 +9,3 @@
 ☐ トーストのY位置centerがstorybookで上手く表示されない原因確認
 ☐ トースト閉じるボタンクリック時のtransition-group挙動確認
 ☐ トースト時限設定
-
-https://bootstrap-vue.org/docs/components/pagination
-https://github.com/zakzakst/nuxt-01/blob/main/components/Pagination.vue

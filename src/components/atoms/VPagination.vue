@@ -1,57 +1,62 @@
 <template>
-  <nav class="pagination" :class="navClass">
-    <v-pagination-button link="test" label="test1" />
-    <v-pagination-button link="" label="test2" />
-    <v-pagination-button label="test3" />
-    <!-- 前に戻るボタン -->
-    <a
-      v-if="currentNum > 1"
-      class="pagination-previous"
-      @click="onClickNavPrev"
-      >Prev</a
-    >
-    <!-- 次に進むボタン -->
-    <a
-      v-if="currentNum < navTotal"
-      class="pagination-next"
-      @click="onClickNavNext"
-      >Next</a
-    >
+  <nav :class="classes">
     <!-- ページネーション -->
     <ul class="inline-flex -space-x-px">
-      <!-- 最初に戻るボタン -->
+      <!-- 前に戻るボタン -->
+      <li v-if="currentNum > 1">
+        <v-pagination-button
+          label="Prev"
+          position="left"
+          @click="onClickNavPrev"
+        />
+      </li>
+      <!-- 最初のボタン -->
       <template v-if="!showNums.includes(1)">
         <li>
-          <a class="pagination-link" @click="onClickNav(1)">1</a>
+          <v-pagination-button
+            label="1"
+            @click="onClickNav(1)"
+          />
         </li>
         <li>
-          <span class="pagination-ellipsis">&hellip;</span>
+          <v-pagination-button
+            label="..."
+            ellipsis
+          />
         </li>
       </template>
       <!-- 表示ボタン -->
-      <li v-for="(num, index) in showNums" :key="num">
-        <a
-          class="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-          :class="{
-            'text-blue-600 bg-blue-50 border-gray-300 hover:bg-blue-100 hover:text-blue-700': num === currentNum,
-            'rounded-l-lg': index === 0,
-            'rounded-r-lg': index === showNums.length - 1,
-          }"
+      <li v-for="(num, index) in showNums" :key="index">
+        <v-pagination-button
+          :label="num"
+          :current="num === currentNum"
+          :position="itemPosition(num)"
           @click="onClickNav(num)"
-          >{{ num }}</a
-        >
+        />
       </li>
-      <!-- 末尾に進むボタン -->
+      <!-- 最後のボタン -->
       <template v-if="!showNums.includes(navTotal)">
         <li>
-          <span class="pagination-ellipsis">&hellip;</span>
+          <v-pagination-button
+            label="..."
+            ellipsis
+          />
         </li>
         <li>
-          <a class="pagination-link" @click="onClickNav(navTotal)">{{
-            navTotal
-          }}</a>
+          <v-pagination-button
+            :label="navTotal"
+            @click="onClickNav(navTotal)"
+          />
         </li>
       </template>
+      <!-- 次に進むボタン -->
+      <li v-if="currentNum < navTotal">
+        <v-pagination-button
+          label="Next"
+          position="right"
+          @click="onClickNavNext"
+        />
+      </li>
     </ul>
   </nav>
 </template>
@@ -97,7 +102,7 @@ export default {
     },
   },
 
-  emits: ['onClickNav', 'onClickNavPrev', 'onClickNavNext'],
+  emits: ['clickNav', 'clickNavPrev', 'clickNavNext'],
 
   setup(props, { emit }) {
     props = reactive(props);
@@ -126,24 +131,36 @@ export default {
       }
     });
 
-    const navClass = computed(() => {
+    const classes = computed(() => {
       return {
-        'is-rounded': props.rounded,
+        'text-center': props.position === 'center',
+        'text-right': props.position === 'right',
       };
     });
+
+    const itemPosition = (num) => {
+      if (num === 1 && props.currentNum === 1) {
+        return 'left';
+      } else if (num === navTotal.value && props.currentNum === navTotal.value) {
+        return 'right';
+      } else {
+        return '';
+      }
+    };
 
     return {
       navTotal,
       showNums,
-      navClass,
+      classes,
+      itemPosition,
       onClickNav(num) {
-        emit('onClickNav', num);
+        emit('clickNav', num);
       },
       onClickNavPrev() {
-        emit('onClickNavPrev');
+        emit('clickNavPrev');
       },
       onClickNavNext() {
-        emit('onClickNavNext');
+        emit('clickNavNext');
       },
     };
   }
