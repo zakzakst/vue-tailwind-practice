@@ -9,8 +9,8 @@
 ☐ トーストのY位置centerがstorybookで上手く表示されない原因確認
 ☐ トースト閉じるボタンクリック時のtransition-group挙動確認
 ☐ トースト時限設定
+☐ ページネーションテーブルみたいなので作ってみる（https://vuetifyjs.com/ja/components/data-tables/）
 
-https://vuetifyjs.com/ja/components/data-tables/
 https://flowbite.com/docs/components/tables/
 https://flowbite.com/docs/components/footer/
 https://flowbite.com/docs/components/navbar/

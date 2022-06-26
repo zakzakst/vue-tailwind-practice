@@ -12,46 +12,14 @@ export default {
         type: 'object',
       },
     },
-    // // X位置フィールド
-    // positionX: {
-    //   name: 'X位置',
-    //   description: 'X位置の設定',
-    //   options: [
-    //     'left',
-    //     'center',
-    //     'right',
-    //   ],
-    //   control: {
-    //     type: 'select',
-    //     labels: {
-    //       left: '左',
-    //       center: '中央',
-    //       right: '右',
-    //     },
-    //   },
-    // },
-    // // Y位置フィールド
-    // positionY: {
-    //   name: 'Y位置',
-    //   description: 'Y位置の設定',
-    //   options: [
-    //     'top',
-    //     'center',
-    //     'bottom',
-    //   ],
-    //   control: {
-    //     type: 'select',
-    //     labels: {
-    //       top: '上',
-    //       center: '中央',
-    //       bottom: '下',
-    //     },
-    //   },
-    // },
-    // // 閉じるクリック時の処理
-    // onClose: {
-    //   action: '閉じるクリック',
-    // },
+    // ヘッダー項目フィールド
+    headers: {
+      name: 'ヘッダー項目',
+      description: 'ヘッダー項目のデータ',
+      control: {
+        type: 'object',
+      },
+    },
   },
 };
 
@@ -66,6 +34,19 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 Default.storyName = '通常';
 Default.args = {
+  headers: [
+    {
+      text: 'Dessert (100g serving)',
+      align: 'start',
+      filterable: false,
+      value: 'name',
+    },
+    { text: 'Calories', value: 'calories' },
+    { text: 'Fat (g)', value: 'fat' },
+    { text: 'Carbs (g)', value: 'carbs' },
+    { text: 'Protein (g)', value: 'protein' },
+    { text: 'Iron (%)', value: 'iron' },
+  ],
   items: [
     {
       name: 'Frozen Yogurt',
