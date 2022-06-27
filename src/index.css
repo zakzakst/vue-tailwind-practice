@@ -3,3 +3,4 @@
 @tailwind utilities;
 
 @import "./css/v-transition.css";
+@import "./css/custom.css";

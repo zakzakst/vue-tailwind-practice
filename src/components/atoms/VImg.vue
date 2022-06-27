@@ -1,12 +1,17 @@
 <template>
-  <div class="overflow-hidden bg-gray-100" :class="classes" :style="styles">
+  <div class="relative flex items-center justify-center overflow-hidden bg-gray-100" :class="classes" :style="styles">
+    <p v-if="state.error" class="p-1 text-center text-xs">画像の取得に失敗しました</p>
     <img
+      v-else
       :src="src"
       :alt="alt"
       :class="imgClasses"
       @load="onLoad"
       @error="onError"
     >
+    <transition name="v-fade">
+      <div v-if="skeleton && !state.loaded" class="skelton absolute z-10 inset-0"></div>
+    </transition>
   </div>
 </template>
 
@@ -45,9 +50,17 @@ export default {
       type: Boolean,
       default: false,
     },
+    skeleton: {
+      type: Boolean,
+      default: false,
+    },
   },
 
+  emits: ['load', 'error'],
+
   setup(props, { emit }) {
+    const loadLimit = 10000;
+
     const state = reactive({
       error: false,
       loaded: false,
@@ -84,12 +97,22 @@ export default {
     });
 
     const onLoad = () => {
-      console.log('load');
+      state.loaded = true;
+      emit('load');
     };
 
-    const onError = () => {
-      console.log('error');
+    const onError = (error) => {
+      state.loaded = true;
+      state.error = true;
+      emit('error', error);
     };
+
+    // ロード限度時間を過ぎても画像ロードが完了していない場合、エラー処理
+    setTimeout(() => {
+      if (!state.loaded) {
+        onError('load limit');
+      }
+    }, loadLimit);
 
     return {
       state,
