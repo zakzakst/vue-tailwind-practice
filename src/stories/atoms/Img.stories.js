@@ -68,33 +68,23 @@ export default {
         type: 'boolean',
       },
     },
-    // // 色フィールド
-    // color: {
-    //   name: '色',
-    //   description: 'アラートの色',
-    //   options: [
-    //     'primary',
-    //     'secondary',
-    //     'success',
-    //     'danger',
-    //     'warning',
-    //     'info',
-    //   ],
-    //   control: {
-    //     type: 'select',
-    //     labels: {
-    //       primary: 'メインカラー',
-    //       secondary: 'セカンダリカラー',
-    //       success: '成功',
-    //       danger: '警告',
-    //       warning: '注意',
-    //       info: '補足',
-    //     },
-    //   },
-    // },
-    // onClickDismiss: {
-    //   action: '閉じるボタンクリック',
-    // },
+    // スケルトン表示フィールド
+    skeleton: {
+      name: 'スケルトン表示',
+      description: '画像読み込み中にスケルトン表示するか',
+      defaultValue: false,
+      control: {
+        type: 'boolean',
+      },
+    },
+    // 画像ロード時の処理
+    onLoad: {
+      action: '画像ロード',
+    },
+    // エラー時の処理
+    onError: {
+      action: 'エラー',
+    },
   },
 };
 
