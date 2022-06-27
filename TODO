@@ -10,6 +10,7 @@
 ☐ トースト閉じるボタンクリック時のtransition-group挙動確認
 ☐ トースト時限設定
 ☐ ページネーションテーブルみたいなので作ってみる（https://vuetifyjs.com/ja/components/data-tables/）
+☐ 画像コンポーネントのアスペクト比のvalidator
 
 https://flowbite.com/docs/components/card/
 https://vuetifyjs.com/ja/components/images/
@@ -18,6 +19,12 @@ https://flowbite.com/docs/forms/search-input/
 https://flowbite.com/docs/components/footer/
 https://flowbite.com/docs/components/navbar/
 
+Moleculesでありそうなの
+範囲選択（金額帯とかMax Minを左右でドラッグして選択するやつ）
+都道府県選択パネル
+生年月日選択
+画像アップロードフォーム（プレビュー機能付き）
+バリデーション付きフォーム（エラーメッセージ下に出す）
 
 メモ
 - https://qiita.com/putan/items/ec312314698087fca5b2
