@@ -13,8 +13,6 @@
 ☐ ページネーションテーブルみたいなので作ってみる（https://vuetifyjs.com/ja/components/data-tables/）
 ☐ 画像コンポーネントのアスペクト比のvalidator
 
-https://flowbite.com/docs/forms/search-input/
-
 Moleculesでありそうなの
 範囲選択（金額帯とかMax Minを左右でドラッグして選択するやつ）
 都道府県選択パネル
